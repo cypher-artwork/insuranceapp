@@ -1,0 +1,95 @@
+ <div class="container-md d-flex flex-column customer-details mx-auto">
+  <div class="card mt-5">
+    <div class="card-header">
+    <div class="card-title text-center">Customer Form</div>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group w-75 my-3">
+        <label for="first_name">First Name</label>
+        <input type="text" class="form-control w-50" id="firstname" formControlName="firstname"
+          placeholder="Enter first name" />
+        <div *ngIf="form.get('firstname')?.invalid && form.get('firstname')?.touched" class="alert alert-danger">
+          First name is required.
+        </div>
+      </div>
+      <div class="form-group w-75 my-3">
+        <label for="last_name">Last Name</label>
+        <input type="text" class="form-control w-50" id="lastname" formControlName="lastname"
+          placeholder="Enter last name" />
+        <div *ngIf="form.get('lastname')?.invalid && form.get('lastname')?.touched" class="alert alert-danger">
+          Last name is required.
+        </div>
+      </div>
+      <div class="form-group w-75 my-2">
+        <label for="id_card_number">ID Card Number</label>
+        <input type="text" class="form-control w-25" id="id_card_number" formControlName="id_card_number"
+          placeholder="Enter ID card number" />
+        <div *ngIf="form.get('id_card_number')?.invalid && form.get('id_card_number')?.touched"
+          class="alert alert-danger">
+          ID card number is missing or invalid.
+        </div>
+      </div>
+      <div class="form-group my-2 w-75">
+        <label for="address">Address</label>
+        <input type="text" class="form-control w-50" id="address" formControlName="address" placeholder="Enter address" />
+        <div *ngIf="form.get('address')?.invalid && form.get('address')?.touched" class="alert alert-danger">
+          Address is missing or invalid.
+        </div>
+      </div>
+      <div class="form-group w-50 my-3">
+        <label for="date_of_birth">Date of Birth</label>
+        <input type="date" class="form-control w-25" id="date_of_birth" formControlName="date_of_birth" />
+        <div *ngIf="form.get('date_of_birth')?.invalid && form.get('date_of_birth')?.touched"
+          class="alert alert-danger">
+          Date of birth is required.
+        </div>
+      </div>
+      <div class="form-group w-50 my-2">
+        <label for="gender">Gender</label>
+        <select class="form-control w-25" id="gender" formControlName="gender">
+                <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+        </select>
+        <div *ngIf="form.get('gender')?.invalid && form.get('gender')?.touched" class="alert alert-danger">
+          Gender is required.
+        </div>
+      </div>
+      <div class="form-group w-75 my-2">
+        <label for="nationality">Nationality</label>
+        <input type="text" class="form-control w-25" id="nationality" formControlName="nationality"
+          placeholder="Enter nationality" />
+        <div *ngIf="form.get('nationality')?.invalid && form.get('nationality')?.touched" class="alert alert-danger">
+          Nationality is required.
+        </div>
+      </div>
+      <div class="form-group w-75 my-2">
+        <label for="passport_number">Passport Number</label>
+        <input type="text" class="form-control  w-25" id="passport_number" formControlName="passport_number"
+          placeholder="Enter passport number" />
+        <div *ngIf="form.get('passport_number')?.invalid && form.get('passport_number')?.touched"
+          class="alert alert-danger">
+          Passport number is required.
+        </div>
+      </div>
+      <div class="form-group w-25 my-2">
+        <label for="phone_number">Mobile Number</label>
+        <input type="tel" class="form-control" id="phone_number" formControlName="phone_number"
+          placeholder="Enter mobile number" />
+        <div class="w-25" *ngIf="form.get('phone_number')?.invalid && form.get('phone_number')?.touched"
+          class="alert alert-danger">
+          Phone number is required.
+        </div>
+      </div>
+      <div class="form-group my-2">
+        <label for="email">Email</label>
+        <input type="email" class="form-control w-25" id="email" formControlName="email" placeholder="Enter email" />
+        <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="alert alert-danger">
+          Email is missing or invalid.
+        </div>
+      </div>      
+       <button [disabled]="!form.valid" type="submit" class="btn btn-success m-1">{{ isUpdateMode ? 'Update Customer' : 'Add Customer' }}</button>
+      <button type="button" class="btn btn-primary mx-2 px-2" routerLink="/customers-list">Back
+      </button> 
+    </form>
+  </div>
+

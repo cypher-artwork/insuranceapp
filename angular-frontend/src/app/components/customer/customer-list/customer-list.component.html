@@ -1,0 +1,65 @@
+  <div class="container mt-2">
+  <table class="table table-bordered table-striped table-hover text-overflow text-center">
+    <thead>
+      <tr class="align-middle text-center small">
+        <th scope="col">
+          Id
+        </th>
+        <th scope="col">
+          First Name
+        </th>
+        <th scope="col">
+          Last Name
+        </th>
+        <th scope="col">Gender </th>
+        <th scope="col" class="d-none d-lg-table-cell">
+          Date of Birth
+        </th>
+        <th scope="col" class="d-none d-lg-table-cell">
+          Nationality 
+        </th>
+        <th scope="col" class="d-none d-lg-table-cell">
+          Id Card Number 
+        </th>
+        <th scope="col" class="d-none d-lg-table-cell">
+          Passport
+        </th>
+        <th scope="col" class="d-none d-lg-table-cell">
+          Address
+        </th>
+        <th scope="col" class="d-none d-lg-table-cell">
+          Phone number
+        </th>
+        <th scope="col" class="d-none d-lg-table-cell">
+          Email
+        </th>
+        <th scope="col" class="d-none d-lg-table-cell">
+          Action
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let customer of customers">
+      
+      <tr class="align-middle">
+        <td> {{ customer.customer_id }}</td>
+        <td>{{ customer.firstname }}</td>
+        <td>{{ customer.lastname }}</td>
+        <td class="d-none d-lg-table-cell">{{  customer.gender }}</td>
+        <td class="d-none d-lg-table-cell">{{  customer.date_of_birth }}</td>
+        <td class="d-none d-lg-table-cell">{{  customer.nationality }}</td>
+        <td class="d-none d-lg-table-cell">{{  customer.id_card_number }}</td>
+        <td class="d-none d-lg-table-cell">{{  customer.passport_number }}</td>
+        <td class="d-none d-lg-table-cell">{{  customer.address }}</td>
+        <td class="d-none d-lg-table-cell">{{  customer.phone_number }}</td>
+        <td class="d-none d-lg-table-cell">{{  customer.email }}</td>
+        <td class="d-none d-lg-table-cell flex-size">
+          <button class="btn btn-primary btn-lg btn-bloc bg-primary m-2 text-right"
+                      (click)="updateCustomer(customer.customer_id)">Update</button>
+          <button class="btn btn-primary btn-lg btn-bloc bg-primary m-2" (click)="deleteCustomer(customer.customer_id)">Delete</button>
+        </td>
+        </tr> 
+    </tbody>     
+  </table>         
+          <button class="btn btn-primary btn-lg btn-bloc bg-primary m-2"
+                routerLink='/add-customer'>Add Customer</button>
+</div>

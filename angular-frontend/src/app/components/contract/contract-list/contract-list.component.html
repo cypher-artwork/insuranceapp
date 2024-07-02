@@ -1,0 +1,48 @@
+<div class="container mt-2">
+<table class="table table-bordered table-striped table-hover text-overflow text-center">
+    <thead>
+        <tr class="align-middle text-center small">
+            <th scope="col">
+                Contract Number
+            </th>
+            <th scope="col">
+                Start Date
+            </th>
+            <th scope="col">
+                End Date
+            </th>
+            <th scope="col">Insurace Type</th>
+            <th scope="col" class="d-none d-lg-table-cell">
+                Insurance Holder
+            </th>
+            <th scope="col" class="d-none d-lg-table-cell">
+                Active
+            </th>
+            <th scope="col" class="d-none d-lg-table-cell">
+                Creation Date
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody *ngFor="let contract of contracts">
+
+        <tr class="align-middle">
+            <td> {{ contract.contract_number }}</td>
+            <td>{{ contract.start_date }}</td>
+            <td>{{ contract.end_date }}</td>
+            <td class="d-none d-lg-table-cell">{{ contract.insurance_type }}</td>
+            <td class="d-none d-lg-table-cell">{{ contract.insurance_holder }}</td>
+            <td class="d-none d-lg-table-cell">{{ contract.active }}</td>
+            <td class="d-none d-lg-table-cell">{{ contract.created_at }}</td>
+            
+            <div flex-size>
+                <button class="btn btn-primary btn-lg btn-bloc bg-primary m-2 text-right"
+                    (click)="updateContract(contract.contract_number)">Update</button>
+                <button class="btn btn-primary btn-lg btn-bloc bg-primary m-2"
+                    (click)="deleteContract(contract.contract_number)">Delete</button>
+            </div>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-primary btn-lg btn-bloc bg-primary m-2" routerLink='/add-contract'>Add Contract</button>
+</div>
